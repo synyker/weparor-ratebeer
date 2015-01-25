@@ -42,6 +42,9 @@ group :development, :test do
   gem 'spring'
 
   gem 'sqlite3'
+
+  gem "better_errors"
+
 end
 
 group :production do
