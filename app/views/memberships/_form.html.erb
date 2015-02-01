@@ -13,11 +13,10 @@
 
   <div class="field">
     <%= f.label :beer_club_id %><br>
-    <%= f.number_field :beer_club_id %>
+    <%= f.select :beer_club_id, options_from_collection_for_select(@beer_clubs, :id, :name) %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id, :value => @uid %>
   </div>
   <div class="actions">
     <%= f.submit %>
