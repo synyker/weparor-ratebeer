@@ -128,4 +128,9 @@ describe User do
 		end
 	end
 
+	BeerClubsController
+	MembershipsController
+
+	BeerClub
+
 end
