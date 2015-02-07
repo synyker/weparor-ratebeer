@@ -1,1 +1,0 @@
-Linkki Heroku-instanssiin: https://stormy-atoll-6158.herokuapp.com/
