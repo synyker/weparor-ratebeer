@@ -14,13 +14,23 @@
 <% end %>
 </p>
 
+<% if !@user.favorite_beer.nil? %>
+	<h2>Favorite beer: <%= @user.favorite_beer %></h2>
+<% end %>
+<% if !@user.favorite_style.nil? %>
+	<h2>Favorite beer style: <%= @user.favorite_style %></h2>
+<% end %>
+<% if !@user.favorite_brewery.nil? %>
+	<h2>Favorite brewery: <%= @user.favorite_brewery.name %></h2>
+<% end %>
+
 <h1>Ratings</h1>
-<ul>
+<ul id="user-ratings">
 <% @user.ratings.each do |r| %>
 	<li>
 		<%= r %> 
 		<% if @user == current_user %>
-			<%= link_to 'delete', r, method: :delete %>
+			<%= link_to 'delete', r, method: :delete, id: 'delete-' + r.id.to_s %>
 		<% end %>
 	</li>
 <% end %>
