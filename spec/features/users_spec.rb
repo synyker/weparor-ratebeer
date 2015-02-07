@@ -51,19 +51,6 @@ describe "User page" do
 
   end
 
-  it "removes users ratings from database when delete is clicked" do
-    user2 = FactoryGirl.create(:user2)
-    r = FactoryGirl.create(:rating, score:10, beer:beer1, user:user2)
-    sign_in(username:"Pekka", password:"Foobar1")
-
-    visit user_path(user2)
-
-    expect{
-      page.find_by_id('delete-2')
-    }.to change{Rating.count}.from(1).to(0)
-    
-  end
-
   it "has favorite beer, style and brewery on user page if ratings added" do
     user2 = FactoryGirl.create(:user2)
     brewery2 = FactoryGirl.create :brewery, name:"Malmgard"
