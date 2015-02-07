@@ -342,6 +342,15 @@
         1,
         null
       ],
+      "/Users/synyker/Repositories/wepa-ror/ratebeer/app/models/membership.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null
+      ],
       "/Users/synyker/Repositories/wepa-ror/ratebeer/app/controllers/beers_controller.rb": [
         1,
         1,
@@ -613,15 +622,6 @@
         null,
         null
       ],
-      "/Users/synyker/Repositories/wepa-ror/ratebeer/app/models/membership.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        null
-      ],
       "/Users/synyker/Repositories/wepa-ror/ratebeer/app/controllers/ratings_controller.rb": [
         1,
         1,
@@ -656,6 +656,6 @@
         null
       ]
     },
-    "timestamp": 1423313244
+    "timestamp": 1423313941
   }
 }

@@ -4,4 +4,4 @@ BeerClubsController
 MembershipsController
 
 BeerClub
-Memberships
+Membership
