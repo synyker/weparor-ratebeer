@@ -1,11 +1,14 @@
 language: ruby
 rvm:
 - 2.2.0
+env:
+- APIKEY="0f9faa90195a1a3e1218640d1bac81c0"
 script:
 - bundle exec rake db:migrate --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
 - bundle exec rspec -fd spec/
+
 deploy:
   provider: heroku
   api_key:

@@ -3,15 +3,17 @@ require 'rails_helper'
 describe "Beers page" do
   let!(:user) { FactoryGirl.create :user }
 
+
   before :each do
     sign_in(username:"Pekka", password:"Foobar1")
     FactoryGirl.create(:brewery, name: "Malmgard", year: 1900)
+    FactoryGirl.create(:style, name: "Porter", description: "Kuvaus")
   end
 
   it "should allow creation of beers with a valid name when signed in" do
     visit new_beer_path
     fill_in('beer[name]', with:'Testikalja')
-    select('IPA', from:'beer[style]')
+    select('Porter', from:'beer[style_id]')
     select('Malmgard', from:'beer[brewery_id]')
     
     expect{
@@ -22,7 +24,7 @@ describe "Beers page" do
   it "should return to new_beer_path if name is invalid when signed in" do
     visit new_beer_path
     fill_in('beer[name]', with:'')
-    select('IPA', from:'beer[style]')
+    select('Porter', from:'beer[style_id]')
     select('Malmgard', from:'beer[brewery_id]')
 
     click_button "Create Beer"

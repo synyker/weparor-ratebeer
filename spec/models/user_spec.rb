@@ -88,10 +88,11 @@ describe User do
 		end
 
 		it "is the one with the highest average rating scores if several rated" do
-			beer = FactoryGirl.create(:beer, style:"Lager")
+			style = Style.create name:"Lager", description:"Kuvaus"
+			beer = FactoryGirl.create(:beer, style:style)
 			FactoryGirl.create(:rating, score:10, beer:beer, user:user)
 
-			expect(user.favorite_style).to eq("Lager")
+			expect(user.favorite_style.name).to eq("Lager")
 		end
 	end
 
@@ -108,7 +109,8 @@ describe User do
 
 		it "is the one with the highest average rating scores if several rated" do
 			beer = FactoryGirl.create(:beer)
-			beer2 = FactoryGirl.create(:beer, name:"Kalja", style:"IPA")
+			style = Style.create name:"Lager", description:"Kuvaus"
+			beer2 = FactoryGirl.create(:beer, name:"Kalja", style:style)
 
 			FactoryGirl.create(:rating, score:30, beer:beer, user:user)
 			FactoryGirl.create(:rating, score:20, beer:beer2, user:user)

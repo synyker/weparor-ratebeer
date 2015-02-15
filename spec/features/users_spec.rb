@@ -54,7 +54,8 @@ describe "User page" do
   it "has favorite beer, style and brewery on user page if ratings added" do
     user2 = FactoryGirl.create(:user2)
     brewery2 = FactoryGirl.create :brewery, name:"Malmgard"
-    beer3 = FactoryGirl.create :beer, name:"Kalia", brewery:brewery2, style:"IPA"
+    style = FactoryGirl.create :style, name:"IPA", description:"kuvaus"
+    beer3 = FactoryGirl.create :beer, name:"Kalia", brewery:brewery2, style:style
 
     sign_in(username:"Pekka", password:"Foobar1")
 
