@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
 	def favorite_style
 		return nil if ratings.empty?	
-		return style_sorted_ratings(ratings.includes(:beer).order("beers.style asc"))
+		return style_sorted_ratings(ratings.includes(:beer).order("beers.style_id asc"))
 	end
 
 	def style_sorted_ratings(sorted_ratings)
