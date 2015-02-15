@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 		favorite = "";
 
 		sorted_ratings.chunk { |r| 
-			r.beer.style
+			r.beer.style_id
 		}.each { |style, ratings|
 			avg = ratings.map { |r| r.score }.sum / ratings.count.to_f
 			if avg > highest
