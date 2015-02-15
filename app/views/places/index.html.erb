@@ -18,7 +18,7 @@
       <tr>
         <% Place.rendered_fields.each do |f| %>
         	<% if f == :name %>
-        		<%= link_to place.name, place_path(params[:city], place.id) %>
+        		<td><%= link_to place.name, place_path(params[:city], place.id) %></td>
         	<% else %>
           	<td><%= place.send(f) %></td>
         	<% end %>
