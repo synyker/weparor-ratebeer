@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @status_text = @user.blocked ? 'unfreeze account' : 'freeze account'
   end
 
   # GET /users/new
@@ -35,6 +36,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def toggle_blocked
+    user = User.find(params[:id])
+    user.update_attribute :blocked, (not user.blocked)
+
+    new_status = user.blocked? ? "frozen" : "unfrozen"
+
+    redirect_to :back, notice:"user status changed to #{new_status}"
   end
 
   # PATCH/PUT /users/1

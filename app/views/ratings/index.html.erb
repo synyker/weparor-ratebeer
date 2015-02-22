@@ -1,3 +1,18 @@
+<h1>Rating statistics</h1>
+
+<%= render 'best', top_beers: @top_beers, top_breweries: @top_breweries, top_styles: @top_styles %>
+
+<h2>Most active users</h2>
+<%= render 'most_active', most_active: @most_active %>
+
+<h2>Recent ratings:</h2>
+<ul>
+	<% @recent.each do |rating| %>
+		<li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
+	<% end %>
+</ul>
+
+
 <h2>List of ratings</h2>
 
 <p>Number of ratings <%= @ratings.count %></p>
@@ -7,4 +22,4 @@
  <% end %>
 </ul>
 
-<p><%= link_to 'Add rating', new_rating_path %></p>
+<p><%= link_to 'Add rating', new_rating_path, class:"btn btn-primary" %></p>

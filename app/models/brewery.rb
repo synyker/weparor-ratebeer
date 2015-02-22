@@ -8,6 +8,9 @@ class Brewery < ActiveRecord::Base
                                    only_integer: true }
   validate :year_cannot_be_in_future
 
+  scope :active, -> { where active:true }
+  scope :retired, -> { where active:[nil,false] }
+
   def year_cannot_be_in_future
     if year > Time.now.year
       errors.add(:year, "can't be greater than #{Time.now.year}")
@@ -23,6 +26,11 @@ class Brewery < ActiveRecord::Base
   def restart
     self.year = 2015
     puts "changed year to #{year}"
+  end
+
+  def self.top(n)
+   sorted_by_rating_in_desc_order = Brewery.all.sort_by{ |b| -(b.average_rating||0) }
+   top = sorted_by_rating_in_desc_order[0..n-1]
   end
 
   def to_s

@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th></th>
+    <th>Favourite beer</th>
+    <th>Preferred style</th>
+    <th>Favourite Brewery</th>
+    <th>Ratings</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% most_active.each do |u| %>
+      <tr>
+        <td><%= link_to u.username, u %></td>
+        <td><%= u.favorite_beer %></td>
+        <td><%= u.favorite_style %></td>
+        <td><%= u.favorite_brewery %></td>
+        <td><%= u.ratings.count %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

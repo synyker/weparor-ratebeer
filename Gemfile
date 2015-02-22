@@ -33,6 +33,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'httparty'
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
