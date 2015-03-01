@@ -1,6 +1,14 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
+
+  def confirm
+    membership = Membership.find(params[:id])
+    membership.update_attribute :confirmed, true
+
+    redirect_to :back, notice:"membership of user #{membership.user.username} confirmed"
+  end
+
   # GET /memberships
   # GET /memberships.json
   def index

@@ -6,11 +6,23 @@
 <% else %>
 	<p>Has <%= pluralize(@user.ratings.count, 'rating') %>, average <%= round(@user.average_rating) %></p>
 <% end %>
-<p>Member of
-<% @user.beer_clubs.each do |c| %>
-	 <%= link_to c.name, c %> 
+<p>Member of:</p>
+<ul>
+<% @memberships.each do |m| %>
+	<% if m.confirmed %>
+		<li><%= link_to m.beer_club.name, m.beer_club %></li>
+	<% end %>
 <% end %>
-</p>
+</ul>
+
+<p>Applied membership of:</p>
+<ul>
+<% @memberships.each do |m| %>
+	<% if not m.confirmed %>
+		<li><%= link_to m.beer_club.name, m.beer_club %></li>
+	<% end %>
+<% end %>
+</ul>
 
 <% if !@user.favorite_beer.nil? %>
 	<h2>Favorite beer: <%= @user.favorite_beer %></h2>

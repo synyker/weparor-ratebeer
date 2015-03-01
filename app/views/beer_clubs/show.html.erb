@@ -3,8 +3,10 @@
 
 <h3>Members:</h3>
 <ul>
-	<% @beer_club.users.each do |u| %>
-		<li><%= link_to u.username, u %></li>
+	<% @confirmed_memberships.each do |m| %>
+		<% if m.confirmed %>
+			<li><%= link_to m.user.username, user_path(m.user_id) %></li>
+		<% end %>
 	<% end %>
 </ul>
 
@@ -20,6 +22,16 @@
       <%= f.hidden_field :beer_club_id %>
       <%= f.submit value: "end the membership", class:"btn btn-primary btn-danger"%>
    <% end %>
+<% end %>
+
+<% if @unconfirmed %>
+	<h3>Unconfirmed members:</h3>
+	<ul>
+		<% @unconfirmed.each do |m| %>
+			<li><%= m.user.username %> <%= link_to "confirm membership", confirm_membership_path(m.id), method: :post, class: "btn btn-primary" %></li>
+		<% end %>
+	</ul>
+
 <% end %>
 
 <%= edit_and_destroy_buttons(@beer_club) %>

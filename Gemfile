@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'httparty'
 
+gem 'jquery-turbolinks'
+
 gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'

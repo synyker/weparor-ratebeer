@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @status_text = @user.blocked ? 'unfreeze account' : 'freeze account'
+
+    @memberships = Membership.where user_id: @user.id
   end
 
   # GET /users/new

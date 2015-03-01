@@ -20,6 +20,13 @@ class BeerClubsController < ApplicationController
     else
       @membership = memberships.first
     end
+
+    is_confirmed = Membership.where user_id: session[:user_id], beer_club_id: @beer_club.id, confirmed: true
+    if not is_confirmed.empty?
+      @unconfirmed = Membership.where beer_club_id: @beer_club.id, confirmed: nil
+    end
+
+    @confirmed_memberships = Membership.where confirmed: true, beer_club_id: @beer_club.id
   end
 
   # GET /beer_clubs/new
@@ -38,6 +45,9 @@ class BeerClubsController < ApplicationController
 
     respond_to do |format|
       if @beer_club.save
+
+        membership = Membership.create(beer_club_id: @beer_club.id, user_id: session[:user_id], confirmed: true)
+
         format.html { redirect_to @beer_club, notice: 'Beer club was successfully created.' }
         format.json { render :show, status: :created, location: @beer_club }
       else

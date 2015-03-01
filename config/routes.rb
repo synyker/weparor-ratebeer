@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :styles
 
-  resources :memberships
+  resources :memberships do
+    post 'confirm', on: :member
+  end
 
   resources :beer_clubs
 
@@ -11,9 +13,14 @@ Rails.application.routes.draw do
 
   resources :beers
 
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+
   resources :breweries do
     post 'toggle_activity', on: :member
   end
+
+  get 'ngbrewerylist', to:'breweries#nglist'
 
   root 'breweries#index'
 
